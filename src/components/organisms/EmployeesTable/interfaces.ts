@@ -14,16 +14,10 @@ export interface HeadCell {
 
 export interface TableHeadProps {
 	classes: ReturnType<typeof useStyles>;
-	numSelected: number;
 	onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Employee) => void;
-	onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
 	order: Order;
 	orderBy: string;
 	rowCount: number;
-}
-
-export interface TableToolbarProps {
-	numSelected: number;
 }
 
 export interface EmployeesTableProps extends RouteComponentProps {

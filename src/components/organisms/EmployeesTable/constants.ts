@@ -2,8 +2,8 @@ import { createStyles, lighten, makeStyles, Theme } from "@material-ui/core/styl
 import { HeadCell } from './interfaces';
 
 export const headCells: HeadCell[] = [
-	{ id: 'id', label: 'ID', width: '5%', sortable: true },
-	{ id: 'employee_name', label: 'Name', width: '40%', sortable: true },
+	{ id: 'id', label: 'ID', width: '10%', sortable: true },
+	{ id: 'employee_name', label: 'Name', width: '35%', sortable: true },
 	{ id: 'employee_salary', label: 'Salary', width: '15%', sortable: true },
 	{ id: 'employee_age', label: 'Age', width: '20%', sortable: true },
 	{ id: 'profile_image', label: 'Image', width: '20%', sortable: false },
