@@ -1,6 +1,8 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 import clsx from 'clsx';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,6 +18,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 import { TableHeadProps, TableToolbarProps } from './interfaces';
 import { Employee } from '../../../interfaces/employee';
@@ -83,9 +86,23 @@ const TableToolbar = (props: TableToolbarProps) => {
 					{numSelected} selected
 				</Typography>
 			) : (
-				<Typography className={classes.title} variant="h6" id="tableTitle">
-					Employees List View
-				</Typography>
+				<Grid container justify="space-between">
+					<Grid item xs={9}>
+						<Typography className={classes.title} variant="h6" id="tableTitle">
+							Employees List View
+						</Typography>
+					</Grid>
+					<Link to="/employee/create" style={{ textDecoration: 'none' }}>
+						<Button
+							variant="contained"
+							color="primary"
+							endIcon={<PersonAddIcon />}
+						>
+							Add Employee
+						</Button>
+					</Link>
+				</Grid>
+
 			)}
 			{numSelected > 0 && (
 				<Tooltip title="Delete">
