@@ -7,16 +7,16 @@ import Toolbar from "@material-ui/core/Toolbar";
 import TextField from "@material-ui/core/TextField";
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveAltIcon from '@material-ui/icons/SaveAlt';
-
-import { employeeClient } from '../../../helpers/employeeClient';
-import BackButton from "../../atoms/BackButton";
-import { Props, State } from "./interfaces";
 import Divider from "@material-ui/core/Divider";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PaymentIcon from "@material-ui/icons/Payment";
 import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
 import ImageIcon from '@material-ui/icons/Image';
 import InputAdornment from "@material-ui/core/InputAdornment";
+
+import { employeeClient } from '../../../helpers/employeeClient';
+import BackButton from "../../atoms/BackButton";
+import { Props, State } from "./interfaces";
 
 class ItemForm extends PureComponent<Props, State> {
 	state: State = {
