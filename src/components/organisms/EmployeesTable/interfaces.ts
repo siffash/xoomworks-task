@@ -1,4 +1,6 @@
 import React from 'react';
+import { RouteComponentProps } from "react-router-dom";
+
 import { useStyles } from './constants';
 import { Employee } from '../../../interfaces/employee';
 import { Order } from '../../../interfaces/order';
@@ -22,4 +24,8 @@ export interface TableHeadProps {
 
 export interface TableToolbarProps {
 	numSelected: number;
+}
+
+export interface EmployeesTableProps extends RouteComponentProps {
+	rows: Array<Employee>;
 }

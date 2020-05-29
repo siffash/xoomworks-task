@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, RouteComponentProps, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import clsx from 'clsx';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -20,7 +20,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
-import { TableHeadProps, TableToolbarProps } from './interfaces';
+import { TableHeadProps, TableToolbarProps, EmployeesTableProps } from './interfaces';
 import { Employee } from '../../../interfaces/employee';
 import { Order } from '../../../interfaces/order';
 
@@ -114,10 +114,6 @@ const TableToolbar = (props: TableToolbarProps) => {
 		</Toolbar>
 	);
 };
-
-interface EmployeesTableProps extends RouteComponentProps {
-	rows: Array<Employee>;
-}
 
 export const EmployeesTable = withRouter(({ rows, history }: EmployeesTableProps) => {
 	const classes = useStyles();
