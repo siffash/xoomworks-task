@@ -29,9 +29,7 @@ class ListView extends PureComponent<any, State>{
 		const { employees } = this.state;
 
 		return (
-			<div>
-				<EmployeesTable rows={employees} />
-			</div>
+			<EmployeesTable rows={employees} />
 		);
 	}
 }

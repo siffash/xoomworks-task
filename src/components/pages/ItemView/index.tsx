@@ -20,7 +20,6 @@ import { Props, State } from './interfaces';
 import { employeeClient } from '../../../helpers/employeeClient';
 import BackButton from "../../atoms/BackButton";
 
-
 class ItemView extends PureComponent<Props, State> {
 	state: State = {
 		employee: {
@@ -33,7 +32,7 @@ class ItemView extends PureComponent<Props, State> {
 	};
 
 	async componentDidMount() {
-		const { id } = this.props.match?.params;
+		const { id } = this.props.match.params;
 		employeeClient
 			.get(`employee/${id}`)
 			.then(({ data: employee }) => this.setState({ employee }))
@@ -72,7 +71,7 @@ class ItemView extends PureComponent<Props, State> {
 				</Toolbar>
 				<br /><br />
 				<Divider />
-				<br /><br />
+				<br /><br /><br />
 				<Grid container justify="space-evenly">
 					{items.map(({ name, value, icon }, index) => (
 						<React.Fragment key={name}>

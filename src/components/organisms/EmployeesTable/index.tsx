@@ -225,7 +225,7 @@ export const EmployeesTable = withRouter(({ rows, history }: EmployeesTableProps
 											<TableCell>
 												{
 													row.profile_image
-														? <img src={row.profile_image} alt='employee profile' />
+														? <img width={50} src={row.profile_image} alt='employee profile' />
 														: 'No image'
 												}
 											</TableCell>
