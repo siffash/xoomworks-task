@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { ListView } from '../components/pages/ListView';
+import ListView from '../components/pages/ListView';
 import ScrollToTop from './helpers/ScrollToTop';
 
 export default function AppRoutes() {
