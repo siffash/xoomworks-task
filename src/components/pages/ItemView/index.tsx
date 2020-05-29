@@ -42,6 +42,12 @@ class ItemView extends PureComponent<Props, State> {
 
 	render(): ReactNode {
 		const { employee } = this.state;
+		const items = [
+			{ name: 'ID', value: employee.id, icon: <FingerprintIcon /> },
+			{ name: 'Name', value: employee.employee_name, icon: <AccountCircleIcon /> },
+			{ name: 'Salary', value: employee.employee_salary, icon: <PaymentIcon /> },
+			{ name: 'Age', value: employee.employee_age, icon: <HourglassEmptyIcon /> },
+		];
 
 		return (
 			<div>
@@ -68,49 +74,21 @@ class ItemView extends PureComponent<Props, State> {
 				<Divider />
 				<br /><br />
 				<Grid container justify="space-evenly">
-					<Grid item>
-						<ListItem>
-							<ListItemAvatar>
-								<Avatar>
-									<FingerprintIcon />
-								</Avatar>
-							</ListItemAvatar>
-							<ListItemText primary="ID" secondary={employee.id} />
-						</ListItem>
-					</Grid>
-					<Divider orientation="vertical" flexItem />
-					<Grid item>
-						<ListItem>
-							<ListItemAvatar>
-								<Avatar>
-									<AccountCircleIcon />
-								</Avatar>
-							</ListItemAvatar>
-							<ListItemText primary="Name" secondary={employee.employee_name} />
-						</ListItem>
-					</Grid>
-					<Divider orientation="vertical" flexItem />
-					<Grid item>
-						<ListItem>
-							<ListItemAvatar>
-								<Avatar>
-									<PaymentIcon />
-								</Avatar>
-							</ListItemAvatar>
-							<ListItemText primary="Salary" secondary={employee.employee_salary} />
-						</ListItem>
-					</Grid>
-					<Divider orientation="vertical" flexItem />
-					<Grid item>
-						<ListItem>
-							<ListItemAvatar>
-								<Avatar>
-									<HourglassEmptyIcon />
-								</Avatar>
-							</ListItemAvatar>
-							<ListItemText primary="Age" secondary={employee.employee_age} />
-						</ListItem>
-					</Grid>
+					{items.map(({ name, value, icon }, index) => (
+						<React.Fragment key={name}>
+							<Grid item>
+								<ListItem>
+									<ListItemAvatar>
+										<Avatar>
+											{icon}
+										</Avatar>
+									</ListItemAvatar>
+									<ListItemText primary={name} secondary={value} />
+								</ListItem>
+							</Grid>
+							{index + 1 !== items.length && <Divider orientation="vertical" flexItem />}
+						</React.Fragment>
+					))}
 				</Grid>
 			</div>
 		);
