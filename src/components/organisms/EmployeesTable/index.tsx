@@ -15,7 +15,10 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import SearchIcon from '@material-ui/icons/Search';
 
 import { TableHeadProps, EmployeesTableProps } from './interfaces';
 import { Employee } from '../../../interfaces/employee';
@@ -96,6 +99,7 @@ export const EmployeesTable = withRouter(({ rows, history }: EmployeesTableProps
 	const [orderBy, setOrderBy] = React.useState<keyof Employee>('id');
 	const [page, setPage] = React.useState(0);
 	const [rowsPerPage, setRowsPerPage] = React.useState(10);
+	const [filterInput, setFilterInput] = React.useState('');
 
 	const handleRequestSort = (event: React.MouseEvent<unknown>, property: keyof Employee) => {
 		const isAsc = orderBy === property && order === 'asc';
@@ -114,18 +118,37 @@ export const EmployeesTable = withRouter(({ rows, history }: EmployeesTableProps
 		setPage(0);
 	};
 
+	const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const { value } = event.target;
+		setFilterInput(value);
+	};
+
 	const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
 	return (
 		<div className={classes.root}>
 			<Paper className={classes.paper}>
 				<TableToolbar />
+				<Grid container justify="center">
+						<TextField
+							value={filterInput}
+							onChange={handleFilterChange}
+							fullWidth
+							placeholder="Search by name"
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								),
+							}}
+						/>
+				</Grid>
 				<TableContainer>
 					<Table
 						className={classes.table}
 						aria-labelledby="tableTitle"
-						size={'medium'}
-						aria-label="enhanced table"
+						size="medium"
 					>
 						<CustomTableHead
 							classes={classes}
@@ -136,6 +159,7 @@ export const EmployeesTable = withRouter(({ rows, history }: EmployeesTableProps
 						/>
 						<TableBody>
 							{stableSort(rows, getComparator(order, orderBy))
+								.filter(({ employee_name }) => employee_name.toLowerCase().includes(filterInput.toLowerCase()))
 								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 								.map((row, index) => {
 									const labelId = `table-${index}`;
